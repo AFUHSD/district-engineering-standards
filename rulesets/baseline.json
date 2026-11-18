@@ -1,0 +1,16 @@
+{
+  "name": "baseline",
+  "target": "branch",
+  "enforcement": "evaluate",
+  "conditions": {
+    "ref_name": { "include": ["~DEFAULT_BRANCH"], "exclude": [] },
+    "repository_name": { "include": ["~ALL"], "exclude": [], "protected": false }
+  },
+  "rules": [
+    { "type": "deletion" },
+    { "type": "non_fast_forward" }
+  ],
+  "bypass_actors": [
+    { "actor_id": 1, "actor_type": "OrganizationAdmin", "bypass_mode": "pull_request" }
+  ]
+}

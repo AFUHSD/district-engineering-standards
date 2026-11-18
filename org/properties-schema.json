@@ -1,0 +1,36 @@
+{
+  "properties": [
+    {
+      "property_name": "tier",
+      "value_type": "single_select",
+      "required": true,
+      "default_value": "c-experiment",
+      "allowed_values": ["a-production", "b-internal", "c-experiment"],
+      "description": "A = live for staff, students or families, touches student or staff data, or a production job. B = internal tools, libraries, MCP servers, skills. C = experiments (default).",
+      "values_editable_by": "org_actors"
+    },
+    {
+      "property_name": "lifecycle",
+      "value_type": "single_select",
+      "required": true,
+      "default_value": "active",
+      "allowed_values": ["active", "maintenance", "retiring", "archived-candidate", "archived"],
+      "description": "Where the repo is in its life. archived-candidate = no known deployment or dependency and no push for 18+ months; confirm by hand before archiving",
+      "values_editable_by": "org_actors"
+    },
+    {
+      "property_name": "owner",
+      "value_type": "string",
+      "required": false,
+      "description": "GitHub login of the person accountable for the repo",
+      "values_editable_by": "org_actors"
+    },
+    {
+      "property_name": "public-candidate",
+      "value_type": "true_false",
+      "required": false,
+      "description": "Treat unset as not a public candidate. True when a scrubbed generic cut of this repo is planned for public release",
+      "values_editable_by": "org_actors"
+    }
+  ]
+}
