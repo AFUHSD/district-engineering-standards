@@ -44,8 +44,8 @@ what merges.
 
 ## 3. Who did this, a person or an agent?
 
-If an agent commits and comments as the person it works for, nobody can tell the two apart later. That person
-also cannot approve their own pull request, so the review rule becomes either unmeetable or meaningless
+If an agent commits as the person it works for, nobody can tell the two apart later. That person also cannot
+approve their own pull request, so the review rule becomes unmeetable or meaningless
 ([`rulesets/README.md`](../rulesets/README.md#the-code-owner-trap)).
 
 Our answer is to give the agent its own GitHub App identity. Each command runs with a short-lived token narrowed
@@ -57,10 +57,9 @@ posts starts with a line that says which agent wrote it and for whom. When the a
 and reports. It never retries as the person.
 
 **The limit.** The guard is not universal. As shipped, organization admins and the named team are bypass actors
-with mode `always`, so they can push to a default branch directly and with no approval. The guarantee holds only
-for actors outside that list. A separate identity also gives attribution, not containment. An agent that runs in
-a person's session can still reach that person's login, so "never retry as the person" is a rule the agent
-follows, not a wall. A ruleset in evaluate only logs and blocks nothing.
+with mode `always`, so they can push to a default branch directly and with no approval. A ruleset in evaluate
+blocks nobody. A separate identity also gives attribution, not containment. An agent in a person's session can
+still reach that person's login, so "never retry as the person" is a rule it follows, not a wall.
 
 ## 4. Who changes production?
 
