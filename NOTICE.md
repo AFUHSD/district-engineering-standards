@@ -21,6 +21,10 @@ The ideas come from Peninsula School District (PSD401), and are credited as idea
 configuration keys from that plugin so a reader can follow along. It includes none of the plugin's code. The plugin
 is published by Peninsula under its own license at <https://github.com/psd401/psd-claude-plugins>.
 
+The format of `docs/why-this-setup.md`, a numbered table of problems that links to a short answer for each, is
+adapted from Byungkyu Lee's `claude-academic-setup`, published under the MIT license at
+<https://github.com/letitbk/claude-academic-setup>. None of its text is reproduced.
+
 ## If we got this wrong
 
 If you believe something here reproduces your work, open an issue and it will be corrected or removed.

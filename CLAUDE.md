@@ -8,6 +8,7 @@ There is no application here and nothing to build.
 | Path | What | Change it when |
 |---|---|---|
 | `README.md` | Purpose, first 10 minutes, credit | The contents change |
+| `docs/why-this-setup.md` | The problems with trusting agents, and our answer to each | A practice changes. Keep the README table in step |
 | `docs/program.md` | Outcomes, rules, phases | The method changes |
 | `docs/tier-model.md` | Tiers and custom properties | A gate or a property changes |
 | `docs/naming.md` | Naming rule and rename steps | The rule changes |

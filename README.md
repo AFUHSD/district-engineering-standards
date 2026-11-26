@@ -19,10 +19,34 @@ This repository ships the method, the rulesets and the script that applies them.
 workflow, a security scanner or a canary. It recommends no specific implementation of those. Peninsula's public organization, linked under Credit, is the
 place to look for worked examples.
 
+## Why this setup exists
+
+These are the problems a district technology team meets when it lets coding agents build and operate things, and
+what we do about each. The format is adapted from Byungkyu Lee's
+[claude-academic-setup](https://github.com/letitbk/claude-academic-setup).
+
+| | Problem | What we do |
+|---|---|---|
+| 1 | [Can I trust what the agent says it did?](docs/why-this-setup.md#1-can-i-trust-what-the-agent-says-it-did) | A definition of done before work starts, a verify gate, and counts in the pull request with what was not verified |
+| 2 | [Who checks the agent?](docs/why-this-setup.md#2-who-checks-the-agent) | A model from another vendor reviews every agent pull request, and review notes name their evidence |
+| 3 | [Who did this, a person or an agent?](docs/why-this-setup.md#3-who-did-this-a-person-or-an-agent) | The agent has its own GitHub identity, signs every comment, and needs a person's approval to reach a default branch |
+| 4 | [Who changes production?](docs/why-this-setup.md#4-who-changes-production) | The agent writes the script and stops. A person runs it, dry run first |
+| 5 | [Where does student data go?](docs/why-this-setup.md#5-where-does-student-data-go) | A self-hosted model is preferred, counts not rows, and no identifier in anything published |
+| 6 | [Will a secret end up in git?](docs/why-this-setup.md#6-will-a-secret-end-up-in-git) | The repository holds the shape of the configuration, a commit hook refuses secrets, and agents never silence a scanner |
+| 7 | [Agents forget what the district knows](docs/why-this-setup.md#7-agents-forget-what-the-district-knows) | Shared skills for what an agent must not get wrong, and an ontology of how the district operates |
+| 8 | [What if it fails and nobody hears?](docs/why-this-setup.md#8-what-if-it-fails-and-nobody-hears) | One register of jobs, a non-zero exit on any failure, and a watchdog for work that nothing runs |
+| 9 | [Agents do more than asked](docs/why-this-setup.md#9-agents-do-more-than-asked) | An out-of-scope list in the issue, one worktree per task, files staged by name, and protected paths |
+| 10 | [How do other builders publish safely?](docs/why-this-setup.md#10-how-do-other-builders-publish-safely) | A branch, a pull request, a person's review, and then the merge is the publish |
+| 11 | [Agents write text people cannot read](docs/why-this-setup.md#11-agents-write-text-people-cannot-read) | Plain style rules: outcome first, short sentences, roles not people |
+
+[Why this setup exists](docs/why-this-setup.md) gives the full answer to each problem, with one known limit for
+each.
+
 ## What is here
 
 | Path | What |
 |---|---|
+| [`docs/why-this-setup.md`](docs/why-this-setup.md) | Eleven problems with trusting coding agents in a district, and what we do about each |
 | [`docs/program.md`](docs/program.md) | The four outcomes, the eight rules, and the phases with their exit criteria |
 | [`docs/tier-model.md`](docs/tier-model.md) | Tier A, B and C, and the custom properties every ruleset targets |
 | [`docs/naming.md`](docs/naming.md) | The repository naming rule and how to rename without breaking anything |
