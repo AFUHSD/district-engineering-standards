@@ -29,7 +29,7 @@ what we do about each. The format is adapted from Byungkyu Lee's
 |---|---|---|
 | 1 | [Can I trust what the agent says it did?](docs/why-this-setup.md#1-can-i-trust-what-the-agent-says-it-did) | A definition of done before work starts, a verify gate, and counts in the pull request with what was not verified |
 | 2 | [Who checks the agent?](docs/why-this-setup.md#2-who-checks-the-agent) | A model from another vendor reviews every agent pull request, and review notes name their evidence |
-| 3 | [Who did this, a person or an agent?](docs/why-this-setup.md#3-who-did-this-a-person-or-an-agent) | The agent has its own GitHub identity, signs every comment, and needs a person's approval to reach a default branch |
+| 3 | [Who did this, a person or an agent?](docs/why-this-setup.md#3-who-did-this-a-person-or-an-agent) | The agent has its own GitHub identity and signs every comment. Actors outside the ruleset's bypass list need a person's approval to reach a default branch |
 | 4 | [Who changes production?](docs/why-this-setup.md#4-who-changes-production) | The agent writes the script and stops. A person runs it, dry run first |
 | 5 | [Where does student data go?](docs/why-this-setup.md#5-where-does-student-data-go) | A self-hosted model is preferred, counts not rows, and no identifier in anything published |
 | 6 | [Will a secret end up in git?](docs/why-this-setup.md#6-will-a-secret-end-up-in-git) | The repository holds the shape of the configuration, a commit hook refuses secrets, and agents never silence a scanner |

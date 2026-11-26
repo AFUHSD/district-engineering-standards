@@ -51,14 +51,16 @@ also cannot approve their own pull request, so the review rule becomes either un
 Our answer is to give the agent its own GitHub App identity. Each command runs with a short-lived token narrowed
 to one repository. The app has no permission to edit workflow files. The
 [`agent-guard`](../rulesets/README.md#agent-guard-a-person-between-an-agent-and-the-default-branch) ruleset
-requires an approval from a team that holds only people before anything reaches a default branch. Every comment
-an agent posts starts with a line that says which agent wrote it and for whom. When the app is refused, the
-agent stops and reports. It never retries as the person.
+covers every actor outside its bypass list, which includes the agent's app. For those actors, a change reaches a
+default branch only through a pull request approved by a team that holds only people. Every comment an agent
+posts starts with a line that says which agent wrote it and for whom. When the app is refused, the agent stops
+and reports. It never retries as the person.
 
-**The limit.** A separate identity gives attribution, not containment. An agent that runs in a person's session
-can still reach that person's login, so "never retry as the person" is a rule the agent follows, not a wall. A
-ruleset in evaluate only logs. Until it is active, staying off the default branch is also a rule the agent
-follows.
+**The limit.** The guard is not universal. As shipped, organization admins and the named team are bypass actors
+with mode `always`, so they can push to a default branch directly and with no approval. The guarantee holds only
+for actors outside that list. A separate identity also gives attribution, not containment. An agent that runs in
+a person's session can still reach that person's login, so "never retry as the person" is a rule the agent
+follows, not a wall. A ruleset in evaluate only logs and blocks nothing.
 
 ## 4. Who changes production?
 
@@ -102,11 +104,12 @@ supplies the values through a channel git cannot see
 ([`public-readiness.md`](public-readiness.md#the-checklist), item 5). Where we can, we remove the secret
 entirely, for example with integrated authentication in place of a stored password. A commit hook, installed
 once for every repository on the machine, refuses credential-shaped paths, data files and known secret patterns.
-The agent's settings carry deny rules, so it cannot read environment files, key files or the secrets folder.
+The agent's settings carry deny rules that refuse reads of environment files, key files and the secrets folder.
 Agents never add an allow-list entry to quiet a scanner. They change the content, or they stop and report.
 
 **The limit.** A local hook exists only where it is installed, and one flag skips it. Scanning on the server has
-to be turned on for each repository. A guard can also fail open after an edit, so run it against a planted
+to be turned on for each repository. A deny rule stops the tools it names, not every route to a file. A guard
+can also fail open after an edit, so run it against a planted
 secret every time you change it.
 
 ## 7. Agents forget what the district knows
